@@ -1,0 +1,49 @@
+body {
+    font-family: Arial;
+    background-color: #fbeec1;
+}
+
+.navBar {
+    padding-left: 200px;
+    padding-right: 240px;
+}
+
+.timerSpot {
+    float: right;
+}
+
+#startBox {
+    padding-top: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+}
+
+header {
+    font-family: Garamond;
+    text-align: center;
+    padding: 20px;
+}
+
+#startButton {
+	box-shadow:inset 0px 0px 0px 0px #000000;
+	background:linear-gradient(to bottom, #ebbf3b 5%, #8f7c2f 100%);
+	background-color:#ebbf3b;
+	border-radius:7px;
+	border:2px solid #1a0909;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:24px;
+	padding:19px 76px;
+	text-decoration:none;
+}
+#startButton:hover {
+	background:linear-gradient(to bottom, #8f7c2f 5%, #ebbf3b 100%);
+	background-color:#8f7c2f;
+}
+#startButton:active {
+	position:relative;
+	top:1px;
+}
