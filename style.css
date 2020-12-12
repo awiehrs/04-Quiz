@@ -36,7 +36,7 @@ header {
 	color:#ffffff;
 	font-family:Arial;
 	font-size:24px;
-	padding:19px 76px;
+	padding:19px 56px;
 	text-decoration:none;
 }
 #startButton:hover {
@@ -46,4 +46,12 @@ header {
 #startButton:active {
 	position:relative;
 	top:1px;
+}
+
+h2 {
+    font-family: Garamond;
+}
+
+button {
+    color: #ebbf3b;
 }
