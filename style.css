@@ -37,6 +37,11 @@ header {
     display: none;
 }
 
+#response {
+    display: none;
+    color: #cc7a00;
+}
+
 #startButton {
 	box-shadow:inset 0px 0px 0px 0px #000000;
 	background:linear-gradient(to bottom, #ebbf3b 5%, #8f7c2f 100%);
@@ -116,3 +121,6 @@ h3 {
 	top:1px;
 }
 
+#scores {
+    text-align: center;
+}

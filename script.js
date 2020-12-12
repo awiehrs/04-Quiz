@@ -1,4 +1,5 @@
 // Variables 
+var navbar = document.querySelector(".navBar")
 var highScores = document.getElementById("viewHighScores");
 var timeDisplay = document.getElementById("timeDisplay");
 var startButton = document.getElementById("startButton");
@@ -9,9 +10,10 @@ var answerButtons = document.getElementById("answerButtons");
 var btn1 = document.getElementById("btn1");
 var btn2 = document.getElementById("btn2");
 var btn3 = document.getElementById("btn3");
+var response = document.getElementById("response")
 var resultsPage = document.getElementById("results");
 var userCorrect = document.getElementById("userScore");
-var userScore = document.getElementById("userScore");
+var score = document.getElementById("userScore");
 var initials = document.getElementById("initials");
 var submitBtn = document.getElementById("submitBtn");
 var viewScores = document.getElementById("viewScores");
@@ -79,7 +81,79 @@ function getQuestion(){
     btn3.textContent = questionSet[i].button3;
 }
 
-// Functions for Starting the Quiz
+function checkAnswer(guess){
+    if (guess === questionSet[i].answer){
+        correct++;
+        i++;
+        response.textContent = "Correct!";
+        showResult();
+        getQuestion();
+    }
+    else{
+        i++;
+        response.textContent = "Wrong!"
+        secondsLeft = secondsLeft - 10;
+        console.log("Seconds Left: "+secondsLeft);
+        showResult();
+        getQuestion();
+    }
+}
+
+function showResult(){
+    response.style.display = "block";
+    var countdown = 1;
+    var timer = setTimeout(function() {
+        countdown--;
+        if (countdown === 0){
+            clearInterval(timer);
+            response.style.display = "none";
+        }
+    }, 1000);
+}
+
+function showFinalResults(){
+    clearInterval(timerInterval);
+    userCorrect.textContent = correct;
+    if (correct === 0){
+        secondsLeft = 0;
+        timeDisplay.textContent = secondsLeft;
+        userCorrect.textContent = "0";
+    }    
+    startPage.style.display = "none";
+    questionPage.style.display = "none";    
+    scoresPage.style.display = "none";
+    resultsPage.style.display = "block";
+}
+
+function getScores(){
+    highscores = JSON.parse(localStorage.getItem("highscores"));
+    console.log(highscores);
+    if(!highscores){
+        highscores = [];
+        return(highscores);
+    }
+    else{
+        return(highscores);
+    }
+}
+
+function showScores(){
+    getScores();
+        for (s=0; s<highscores.length; s++){
+            var scoreInitials = highscores[s].initials;
+            var scoreSaved = highscores[s].score;
+            var scoreEntry = document.createElement("li");
+            scoreEntry.setAttribute("class", "score");
+            scoreEntry.textContent = scoreInitials + " - " + scoreSaved; 
+            leaderBoard.appendChild(scoreEntry);
+        }
+    navbar.style.visibility = "hidden";
+    startPage.style.display = "none";
+    questionPage.style.display = "none";
+    resultsPage.style.display = "none";
+    scoresPage.style.display = "block";
+}
+
 function startTimer (secondsLeft){
     timerInterval = setInterval(timer, 1000);
 }
@@ -95,9 +169,9 @@ function timer() {
         return;
     }
 }
-function onClick(event){
+function startClick(event){
     event.preventDefault();
-    //getScores();
+    getScores();
     getQuestion();
     startPage.style.display = "none";
     questionPage.style.display = "block";
@@ -105,5 +179,29 @@ function onClick(event){
     startTimer(secondsLeft);
 }
 
-startButton.addEventListener("click", onClick)
+startButton.addEventListener("click", startClick)
+answerButtons.addEventListener("click", function (event){
+    if(event.target.matches("button")){
+        event.preventDefault();
+        guess = event.target.value;
+        checkAnswer(guess);
+    }
+})
+submitBtn.addEventListener("click", function (event){
+    event.preventDefault();
+    userInitials = initials.value.trim();
+    if (userInitials === ""){
+        alert("Please enter your initials.");
+        return;
+    }
+    console.log(userInitials);
+    userScore = secondsLeft;
+    console.log(userScore);
+    var newScore = {"initials": userInitials, "score": userScore};
+    highscores.push(newScore);
+    highscores.sort(function(a, b){return(b.score-a.score)});
+    console.log("HighScores: " + highscores);
+    localStorage.setItem("highscores", JSON.stringify(highscores));
+    showScores();
+})
 

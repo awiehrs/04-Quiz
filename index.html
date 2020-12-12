@@ -31,14 +31,15 @@
                 <button class="answerButtons" id="btn1" value="a">Choice 1</button><br>
                 <button class="answerButtons" id="btn2" value="b">Choice 2</button><br>
                 <button class="answerButtons" id="btn3" value="c">Choice 3</button><br>
-            </div>
+            </div><br>
+            <div id="response"><p>Check</p></div>
             </main>
         </div>
 
         <div id="results">
             <h3>How'd you Do?</h3>
-            <p>You got <span id="userCorrect"></span>/5 questions correct.<br>
-            Your final score is <span id="userScore"></span><br>
+            <p>You got <span id="userScore"></span>/5 questions correct.<br><br>
+            Your final score is <div id="userCorrect"></div><br><br>
             <b>Enter Initials:</b> <input type="text" id="initials">
             <button id="submitBtn">Submit Your Score</button>
             </p>
@@ -46,7 +47,7 @@
 
         <div id="scores">
             <h3>Highscores</h3>
-            <ul id="leaderBoard"></ul>
+            <ol id="leaderBoard"></ol>
         </div>
         
     </div>
