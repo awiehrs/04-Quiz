@@ -21,23 +21,37 @@
             Test that knowledge out in this timed quiz.<br>
             For every wrong answer, you will lose time...so think sharp!
             </p>
-            <btn id="startButton">Begin!</btn>
+            <button id="startButton">Begin!</button>
         </div>
 
         <div id="questions">
             <main>
             <h2 id="questionText">Question</h2>
             <div id="answerButtons">
-                <button id="btn1" value="1">Choice 1</button><br>
-                <button id="btn2" value="2">Choice 2</button><br>
-                <button id="btn3" value="3">Choice 3</button><br>
+                <button class="answerButtons" id="btn1" value="a">Choice 1</button><br>
+                <button class="answerButtons" id="btn2" value="b">Choice 2</button><br>
+                <button class="answerButtons" id="btn3" value="c">Choice 3</button><br>
             </div>
             </main>
+        </div>
+
+        <div id="results">
+            <h3>How'd you Do?</h3>
+            <p>You got <span id="userCorrect"></span>/5 questions correct.<br>
+            Your final score is <span id="userScore"></span><br>
+            <b>Enter Initials:</b> <input type="text" id="initials">
+            <button id="submitBtn">Submit Your Score</button>
+            </p>
+        </div>
+
+        <div id="scores">
+            <h3>Highscores</h3>
+            <ul id="leaderBoard"></ul>
         </div>
         
     </div>
 
 
-    <script src="script.js" type="script"></script>
+    <script src="./script.js"></script>
 </body>
 </html>
