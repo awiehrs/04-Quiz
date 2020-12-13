@@ -8,12 +8,14 @@
     
 </head>
 <body>
+    <!-- NavBar - High Score Link and Timer-->
     <nav class="navBar">
         <button id="viewHighScores">View High Scores</button>
         <div class="timerSpot">Time: <span id="timeDisplay"></span></div>
     </nav>
-
+    <!-- Main Content Box-->
     <div id="quizBox">
+        <!-- Start Screen-->
         <div id="start">
             <header>
             <h1 id="quiz-header">What Do You Know About Honeybees?</h1>
@@ -23,7 +25,7 @@
             </p>
             <button id="startButton">Begin!</button>
         </div>
-
+        <!-- Questions Screen-->
         <div id="questions">
             <main>
             <h2 id="questionText">Question</h2>
@@ -35,7 +37,7 @@
             <div id="response"><p>Check</p></div>
             </main>
         </div>
-
+        <!-- Results Screen - Scores -->
         <div id="results">
             <h3>How'd you Do?</h3>
             <p>You got <span id="userCorrect"></span>/5 questions correct.<br><br>
@@ -44,7 +46,7 @@
             <button id="submitBtn">Submit Your Score</button>
             </p>
         </div>
-
+        <!-- High Scores Screen - Leaderboard-->
         <div id="scores">
             <h3>High Scores Leaderboard</h3>
             <ol id="leaderBoard"></ol>

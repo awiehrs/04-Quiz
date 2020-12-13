@@ -69,7 +69,9 @@ var questionSet = [
     }
 ];
 
-// Functions to Display Questions
+// Functions 
+
+//Load Questions Function
 function getQuestion(){
     if (i === questionSet.length){
         clearInterval(timerInterval);
@@ -81,7 +83,7 @@ function getQuestion(){
     btn2.textContent = questionSet[i].button2;
     btn3.textContent = questionSet[i].button3;
 }
-
+//Check the answer to each question
 function checkAnswer(guess){
     if (guess === questionSet[i].answer){
         correct++;
@@ -99,7 +101,7 @@ function checkAnswer(guess){
         getQuestion();
     }
 }
-
+//Gives user score
 function showResult(){
     response.style.display = "block";
     var countdown = 1;
@@ -111,7 +113,7 @@ function showResult(){
         }
     }, 1000);
 }
-
+//Loads scores Page 
 function showFinalResults(){
     clearInterval(timerInterval);
     userCorrect.textContent = correct;
@@ -125,7 +127,7 @@ function showFinalResults(){
     scoresPage.style.display = "none";
     resultsPage.style.display = "block";
 }
-
+//Stores high scores
 function getScores(){
     highscores = JSON.parse(localStorage.getItem("highscores"));
     console.log(highscores);
@@ -137,7 +139,7 @@ function getScores(){
         return(highscores);
     }
 }
-
+//Function to create leaderboard
 function showScores(){
     getScores();
         for (s=0; s<highscores.length; s++){
@@ -154,7 +156,7 @@ function showScores(){
     resultsPage.style.display = "none";
     scoresPage.style.display = "block";
 }
-
+//Timer functions
 function startTimer (secondsLeft){
     timerInterval = setInterval(timer, 1000);
 }
@@ -170,6 +172,7 @@ function timer() {
         return;
     }
 }
+//Functions for starting quiz
 function startClick(event){
     event.preventDefault();
     getScores();
@@ -179,8 +182,10 @@ function startClick(event){
     timeDisplay.textContent = secondsLeft;
     startTimer(secondsLeft);
 }
+//Event Listener's for all buttons
 
 startButton.addEventListener("click", startClick)
+
 answerButtons.addEventListener("click", function (event){
     if(event.target.matches("button")){
         event.preventDefault();
