@@ -12,17 +12,18 @@ var btn2 = document.getElementById("btn2");
 var btn3 = document.getElementById("btn3");
 var response = document.getElementById("response")
 var resultsPage = document.getElementById("results");
-var userCorrect = document.getElementById("userScore");
 var score = document.getElementById("userScore");
 var initials = document.getElementById("initials");
 var submitBtn = document.getElementById("submitBtn");
 var viewScores = document.getElementById("viewScores");
 var scoresPage = document.getElementById("scores");
 var leaderBoard = document.getElementById("leaderBoard");
+var clearBtn = document.getElementById("clearButton");
+var backBtn = document.getElementById("backButton")
 var i = 0;
 var guess;
 var correct = 0;
-var secondsLeft = 75;
+var secondsLeft = 50;
 var timerInterval;
 var highscores = [];
 var userInitials;
@@ -187,6 +188,7 @@ answerButtons.addEventListener("click", function (event){
         checkAnswer(guess);
     }
 })
+
 submitBtn.addEventListener("click", function (event){
     event.preventDefault();
     userInitials = initials.value.trim();
@@ -195,9 +197,9 @@ submitBtn.addEventListener("click", function (event){
         return;
     }
     console.log(userInitials);
-    userScore = secondsLeft;
-    console.log(userScore);
-    var newScore = {"initials": userInitials, "score": userScore};
+    score = secondsLeft;
+    console.log(score);
+    var newScore = {"initials": userInitials, "score": score};
     highscores.push(newScore);
     highscores.sort(function(a, b){return(b.score-a.score)});
     console.log("HighScores: " + highscores);
@@ -205,3 +207,21 @@ submitBtn.addEventListener("click", function (event){
     showScores();
 })
 
+highScores.addEventListener("click", function(event){
+    event.preventDefault();
+    clearInterval(timerInterval);
+    showScores();
+})
+
+clearBtn.addEventListener("click", function(event){
+    event.preventDefault();
+    localStorage.removeItem("highscores");
+    while(leaderBoard.firstChild){
+        leaderBoard.removeChild(leaderBoard.lastChild);
+    }
+})
+
+backBtn.addEventListener("click", function(event){
+    event.preventDefault();
+    window.location.reload();
+})

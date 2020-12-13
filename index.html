@@ -9,14 +9,14 @@
 </head>
 <body>
     <nav class="navBar">
-        <a href="" id="viewHighScores">View High Scores</a>
+        <button id="viewHighScores">View High Scores</button>
         <div class="timerSpot">Time: <span id="timeDisplay"></span></div>
     </nav>
 
     <div id="quizBox">
         <div id="start">
             <header>
-            <h1 id="quiz-header">What Do You Know About Bees?</h1>
+            <h1 id="quiz-header">What Do You Know About Honeybees?</h1>
             <p>You think you know a lot about Honeybees?<br>
             Test that knowledge out in this timed quiz.<br>
             For every wrong answer, you will lose time...so think sharp!
@@ -38,16 +38,17 @@
 
         <div id="results">
             <h3>How'd you Do?</h3>
-            <p>You got <span id="userScore"></span>/5 questions correct.<br><br>
-            Your final score is <div id="userCorrect"></div><br><br>
+            <p>You got <span id="userCorrect"></span>/5 questions correct.<br><br>
+            Your final score is <div id="userScore"></div><br><br>
             <b>Enter Initials:</b> <input type="text" id="initials">
             <button id="submitBtn">Submit Your Score</button>
             </p>
         </div>
 
         <div id="scores">
-            <h3>Highscores</h3>
+            <h3>High Scores Leaderboard</h3>
             <ol id="leaderBoard"></ol>
+            <button id="clearButton">Clear Scores</button> <button id="backButton">Return</button>
         </div>
         
     </div>
